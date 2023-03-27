@@ -1,0 +1,6 @@
+.env.local
+.next/
+.vercel/
+stripe.exe
+yarn-error.log
+node_modules/
