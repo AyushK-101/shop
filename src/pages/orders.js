@@ -4,7 +4,7 @@ import Order from "../components/Order";
 import moment from "moment";
 import db from "../../firebase";
 
-function Orders({ orders }) {
+const Orders = ({ orders }) => {
   const { data: session } = useSession();
 
   return (
@@ -47,15 +47,16 @@ export async function getServerSideProps(context) {
 
   if (!session) {
     return {
-      props: {}
+      props: {},
     }; 
   }
 
-  const stripeOrders = await db.collection('users').doc(session.user.email).
+  const stripeOrders = await db.collection('users').doc((await session).user.email).
   collection('orders').orderBy('timestamp', 'desc').get();
 
   const orders = await Promise.all(
     stripeOrders.docs.map(async (order) =>({
+      // key: order.id,
       id: order.id,
       amount: order.data().amount,
       amountShipping: order.data().amount_shipping,
@@ -72,7 +73,7 @@ export async function getServerSideProps(context) {
   
   return {
     props: {
-      orders,
+      orders: orders,
     }
   };
 }
