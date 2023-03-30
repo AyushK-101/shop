@@ -21,15 +21,15 @@ const Orders = ({ orders }) => {
       }
 
       <div className="mt-5 space-y-4">
-        {orders?.map(({id,amount,amountShipping,items,timestamp,images}) => (
+        {orders?.map((order) => (
           <Order
-            key={id}
-            id={id}
-            amount={amount}
-            amountShipping={amountShipping}
-            items={items}
-            timestamp={timestamp}
-            images={images}
+            key={order.id}
+            id={order.id}
+            amount={order.amount}
+            amountShipping={order.amountShipping}
+            items={order.items}
+            timestamp={order.timestamp}
+            images={order.images}
           />
         ))}
       </div>
@@ -41,7 +41,7 @@ const Orders = ({ orders }) => {
 export default Orders;
 
 export async function getServerSideProps(context) {
-  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+  const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
   const session = await getSession(context);
 
