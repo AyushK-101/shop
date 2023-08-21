@@ -43,7 +43,9 @@ function Product({id, title, price, description, category, image}) {
       <p className="absolute top-2 right-2 text-xs italic text-gray-400">{category}</p>
 
       <div className="flex justify-center">
-       <Image src={`https://res.cloudinary.com/demo/image/fetch/w_380,h_380/${image}`} height={200} width={200} alt="" />
+        <div className="flex mx-auto justify-center h-[250px] w-[250px]">
+           <Image src={image} height={200} width={200} alt="" />
+        <div>
       </div>
 
       <h4 className="my-3">{title}</h4>
