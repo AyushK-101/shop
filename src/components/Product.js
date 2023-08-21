@@ -45,7 +45,7 @@ function Product({id, title, price, description, category, image}) {
       
         <div className="flex mx-auto justify-center h-[250px] w-[250px]">
            <Image src={image} height={200} width={200} alt="" />
-        <div>
+        </div>
       
 
       <h4 className="my-3">{title}</h4>
