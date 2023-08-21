@@ -37,7 +37,9 @@ function CheckoutProduct({
 
   return (
     <div className="grid grid-cols-5">
-      <Image src={`https://res.cloudinary.com/demo/image/fetch/w_380,h_380/${image}`} height={200} width={200} alt="" />
+      <div className="flex mx-auto justify-center h-[250px] w-[250px]">
+         <Image src={image} height={200} width={200} alt="" />
+      </div>
       
       <div className="col-span-3 mx-5">
         <p>{title}</p>
